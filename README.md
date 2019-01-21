@@ -34,7 +34,7 @@ Application is tested using different kids of test:
 
 [src/test/java/com/pik/contact/service/integration/ContactServiceTest.java](src/test/java/com/pik/contact/service/integration/ContactServiceTest.java)
 
-* Spring mvc test for REST endpoint
+* Spring mvc test for REST endpoint aka API test
 
 [src/test/java/com/pik/contact/api/ContactControllerTest.java](src/test/java/com/pik/contact/api/ContactControllerTest.java)
 
