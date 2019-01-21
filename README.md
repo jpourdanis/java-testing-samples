@@ -1,6 +1,6 @@
 
 
-Java application testing examples
+Java application testing examples for meetup : https://www.meetup.com/Serrai-Software-Development-Meetup/events/257786866/
 =========================
 
 ### BUILD  
