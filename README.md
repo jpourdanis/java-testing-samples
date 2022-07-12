@@ -5,7 +5,7 @@ Java application testing examples for meetup : https://www.meetup.com/Serrai-Sof
 
 ### BUILD  
 
-mvn clean package
+mvn clean package -DskipTests
 
 ### RUN
 
