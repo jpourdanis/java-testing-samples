@@ -1,7 +1,7 @@
 package com.pik.contact.gui.selenium.setup;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,8 +11,8 @@ public class SeleniumDriver {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
-            driver = new FirefoxDriver();    //can be replaced with HtmlUnitDriver for better performance
+            System.setProperty("webdriver.chrome.driver", "/Users/macbook/Documents/Work/qa-academy/chromedriver");
+            driver = new ChromeDriver();    //can be replaced with HtmlUnitDriver for better performance
             driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         }
         return driver;
