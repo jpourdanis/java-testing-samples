@@ -2,7 +2,7 @@
 
 ### BUILD
 
-mvn clean package
+mvn clean package -DskipTests
 
 ### RUN
 
