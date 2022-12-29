@@ -39,3 +39,9 @@ Application is tested using different kids of test:
 - GUI test with Selenium (with Page Object pattern)
 
 [src/test/java/com/pik/contact/gui/selenium/test/ContactsTest.java](src/test/java/com/pik/contact/gui/selenium/test/ContactsTest.java)
+
+### RUN external API tests
+
+1. Create an account to https://gorest.co.in/
+2. Create an API Token
+3. Run `mvn -DAPITOKEN=<Your-Token-here> surefire:test`
