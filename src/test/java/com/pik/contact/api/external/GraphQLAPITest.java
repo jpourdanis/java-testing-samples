@@ -21,7 +21,7 @@ import static com.jayway.restassured.RestAssured.*;
 @DisplayName("API calls to gorest.co.in with GraphQL")
 public class GraphQLAPITest {
 
-        public static String newUserId;
+        public static Integer newUserId;
 
         public static String randomEmail = RandomStringUtils.randomAlphabetic(8) + "@mail.com";
 
@@ -58,7 +58,7 @@ public class GraphQLAPITest {
                                 .statusCode(200)
                                 .and()
                                 .extract()
-                                .path("data.createUser.user.id").toString();
+                                .path("data.createUser.user.id");
                 System.out.println("The new user id is: " + newUserId);
         }
 
@@ -123,7 +123,7 @@ public class GraphQLAPITest {
 
                 JSONObject updateUserVars = new JSONObject();
                 updateUserVars.put("name", updatedName);
-                updateUserVars.put("id", Integer.parseInt(newUserId));
+                updateUserVars.put("id", newUserId);
                 updateUserMutation.setVariables(updateUserVars.toString());
 
                 given()
@@ -151,7 +151,7 @@ public class GraphQLAPITest {
                                 "mutation ($id: Int!) { deleteUser(input: { id: $id }) { user { id name gender email  status  } } }");
 
                 JSONObject deleteUserVars = new JSONObject();
-                deleteUserVars.put("id", Integer.parseInt(newUserId));
+                deleteUserVars.put("id", newUserId);
 
                 deleteUserMutation.setVariables(deleteUserVars.toString());
 
@@ -167,7 +167,7 @@ public class GraphQLAPITest {
                                 .then()
                                 .assertThat()
                                 .statusCode(200)
-                                .body("data.deleteUser.user.id", Matchers.equalTo(Integer.parseInt(newUserId)));
+                                .body("data.deleteUser.user.id", Matchers.equalTo(newUserId));
         }
 
 }

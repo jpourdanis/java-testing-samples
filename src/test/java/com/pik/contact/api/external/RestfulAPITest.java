@@ -17,7 +17,7 @@ import static com.jayway.restassured.RestAssured.*;
 @DisplayName("API calls to gorest.co.in with REST")
 public class RestfulAPITest {
 
-        public static String newUserId;
+        public static Integer newUserId;
 
         public static String randomEmail = RandomStringUtils.randomAlphabetic(8) + "@mail.com";
 
@@ -43,7 +43,7 @@ public class RestfulAPITest {
                                 .assertThat()
                                 .statusCode(201)
                                 .extract()
-                                .path("id").toString();
+                                .path("id");
                 System.out.println("The new user id is: " + newUserId);
         }
 
@@ -69,8 +69,9 @@ public class RestfulAPITest {
                                                 "Bearer " + bearerToken,
                                                 "Content-Type",
                                                 ContentType.JSON)
+                                .pathParam("id", newUserId)
                                 .when()
-                                .get("/users/" + newUserId)
+                                .get("/users/{id}")
                                 .then()
                                 .assertThat()
                                 .statusCode(200)
@@ -88,9 +89,10 @@ public class RestfulAPITest {
                                                 "Bearer " + bearerToken,
                                                 "Content-Type",
                                                 ContentType.JSON)
+                                .pathParam("id", newUserId)
                                 .queryParam("name", updatedName)
                                 .when()
-                                .put("/users/" + newUserId)
+                                .put("/users/{id}")
                                 .then()
                                 .assertThat()
                                 .statusCode(200)
@@ -107,8 +109,9 @@ public class RestfulAPITest {
                                                 "Bearer " + bearerToken,
                                                 "Content-Type",
                                                 ContentType.JSON)
+                                .pathParam("id", newUserId)
                                 .when()
-                                .delete("/users/" + newUserId)
+                                .delete("/users/{id}")
                                 .then()
                                 .assertThat()
                                 .statusCode(204);
