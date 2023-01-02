@@ -114,7 +114,7 @@ public class GraphQLAPITest {
         @Test
         @DisplayName("Should update the name of user")
         public void testC() {
-                String updatedName = "John Pourdanopoulos";
+                String nameToUpdate = "John Pourdanopoulos";
 
                 GraphQLQuery updateUserMutation = new GraphQLQuery();
 
@@ -122,7 +122,7 @@ public class GraphQLAPITest {
                                 "mutation ($id: Int!, $name: String!) { updateUser ( input: { id: $id, name: $name }) { user { id name gender email status  } } }");
 
                 JSONObject updateUserVars = new JSONObject();
-                updateUserVars.put("name", updatedName);
+                updateUserVars.put("name", nameToUpdate);
                 updateUserVars.put("id", newUserId);
                 updateUserMutation.setVariables(updateUserVars.toString());
 
@@ -138,7 +138,7 @@ public class GraphQLAPITest {
                                 .then()
                                 .assertThat()
                                 .statusCode(200)
-                                .body("data.updateUser.user.name", Matchers.equalTo(updatedName));
+                                .body("data.updateUser.user.name", Matchers.equalTo(nameToUpdate));
         }
 
         @AfterClass
