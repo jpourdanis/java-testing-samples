@@ -1,4 +1,4 @@
-# Java application testing examples for meetup : https://www.meetup.com/Serrai-Software-Development-Meetup/events/257786866/
+# Java application testing examples 
 
 ### BUILD
 
@@ -41,6 +41,10 @@ Application is tested using different kids of test:
 [src/test/java/com/pik/contact/gui/selenium/test/ContactsTest.java](src/test/java/com/pik/contact/gui/selenium/test/ContactsTest.java)
 
 ### RUN external API tests
+
+> Before we start, open this in a new tab and let the container load. Takes a few mins. Longer for slower internet.
+
+[![Try in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jpourdanis/java-testing-samples)
 
 1. Create an account to https://gorest.co.in/
 2. Create an API Token
