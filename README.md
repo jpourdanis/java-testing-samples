@@ -1,4 +1,4 @@
-# Java application testing examples 
+# Java application testing examples
 
 ### BUILD
 
@@ -48,4 +48,6 @@ Application is tested using different kids of test:
 
 1. Create an account to https://gorest.co.in/
 2. Create an API Token
-3. Run `mvn -DAPITOKEN=<Your-Token-here> surefire:test`
+3. Run `mvn test -DAPITOKEN=<Your-Token-here>`
+
+- To run all tests with testing extension you need to add your token to [.vscode/settings.json](.vscode/settings.json) file.
