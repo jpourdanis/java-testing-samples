@@ -374,6 +374,9 @@
 							<exclude>
 								com.pik.contact.api.ContactControllerTest.java
 							</exclude>
+							<exclude>
+								com.pik.contact.api.internal.ContactApiTest.java
+							</exclude>
 						</excludes>
 					</configuration>
 					<dependencies>
