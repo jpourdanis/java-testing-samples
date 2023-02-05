@@ -47,9 +47,26 @@ public class RestfulAPITest {
                 System.out.println("The new user id is: " + newUserId);
         }
 
+        @AfterClass
+        @DisplayName("Should delete the user.")
+        public static void teardown() {
+                given()
+                                .headers(
+                                                "Authorization",
+                                                "Bearer " + bearerToken,
+                                                "Content-Type",
+                                                ContentType.JSON)
+                                .pathParam("id", newUserId)
+                                .when()
+                                .delete("/users/{id}")
+                                .then()
+                                .assertThat()
+                                .statusCode(204);
+        }
+
         @Test
         @DisplayName("Should get all users")
-        public void testA() {
+        public void test1() {
                 given()
                                 .header(new Header("Authorization", "Bearer " + bearerToken))
                                 .header(new Header("Content-type", "application/json"))
@@ -62,7 +79,7 @@ public class RestfulAPITest {
 
         @Test
         @DisplayName("Should get user details by id")
-        public void testB() {
+        public void test2() {
                 given()
                                 .headers(
                                                 "Authorization",
@@ -81,7 +98,7 @@ public class RestfulAPITest {
 
         @Test
         @DisplayName("Should update the name of user")
-        public void testC() {
+        public void test3() {
                 String updatedName = "John Pourdanopoulos";
                 given()
                                 .headers(
@@ -100,20 +117,4 @@ public class RestfulAPITest {
                                 .body("email", Matchers.equalTo(randomEmail));
         }
 
-        @AfterClass
-        @DisplayName("Should delete the user.")
-        public static void teardown() {
-                given()
-                                .headers(
-                                                "Authorization",
-                                                "Bearer " + bearerToken,
-                                                "Content-Type",
-                                                ContentType.JSON)
-                                .pathParam("id", newUserId)
-                                .when()
-                                .delete("/users/{id}")
-                                .then()
-                                .assertThat()
-                                .statusCode(204);
-        }
 }

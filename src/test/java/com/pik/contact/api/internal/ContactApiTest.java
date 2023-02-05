@@ -79,7 +79,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should get all contacts.")
-        public void testA() {
+        public void test1() {
                 given()
                                 .headers(
                                                 "Content-Type",
@@ -93,7 +93,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should get contact details by id.")
-        public void testB() {
+        public void test2() {
                 given()
                                 .headers(
                                                 "Content-Type",
@@ -110,7 +110,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should get contact details by email.")
-        public void testC() {
+        public void test3() {
                 given()
                                 .headers(
                                                 "Content-Type",
@@ -127,7 +127,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should update the name of a contact.")
-        public void testD() {
+        public void test4() {
                 String fullNameToUpdate = "John Pourdanopoulos";
                 Contact contactToUpdate = new Contact(null, fullNameToUpdate, null, null, null, null);
                 newContact.updateWith(contactToUpdate);
@@ -157,7 +157,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should fail to create a contact with null name.")
-        public void testF() {
+        public void test5() {
 
                 JSONObject createContactVars = new JSONObject();
                 createContactVars.put("name", null);
@@ -182,7 +182,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should fail to create a contact with invalid email.")
-        public void testG() {
+        public void test6() {
 
                 JSONObject createContactVars = new JSONObject();
                 createContactVars.put("name", newContact.getName());
@@ -207,7 +207,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should fail to create a contact with invalid number.")
-        public void testH() {
+        public void test7() {
 
                 JSONObject createContactVars = new JSONObject();
                 createContactVars.put("name", newContact.getName());
@@ -232,7 +232,7 @@ public class ContactApiTest {
 
         @Test
         @DisplayName("Should fail to create a contact with invalid skype id.")
-        public void testI() {
+        public void test8() {
 
                 JSONObject createContactVars = new JSONObject();
                 createContactVars.put("name", newContact.getName());
