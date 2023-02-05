@@ -84,7 +84,7 @@ public class Contact {
         return fullName;
     }
 
-    public String getJobTittle() {
+    public String getJobTitle() {
         return jobTitle;
     }
 

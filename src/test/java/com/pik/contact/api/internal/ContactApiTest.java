@@ -40,7 +40,7 @@ public class ContactApiTest {
                 createUserVars.put("id", newContact.getId());
                 createUserVars.put("name", newContact.getName());
                 createUserVars.put("fullName", newContact.getFullName());
-                createUserVars.put("jobTitle", newContact.getJobTittle());
+                createUserVars.put("jobTitle", newContact.getJobTitle());
                 createUserVars.put("email", newContact.getEmail());
                 createUserVars.put("mobile", newContact.getMobile());
                 createUserVars.put("skypeId", newContact.getSkypeId());
@@ -135,7 +135,7 @@ public class ContactApiTest {
                 JSONObject updateContactVars = new JSONObject();
                 updateContactVars.put("name", newContact.getName());
                 updateContactVars.put("fullName", newContact.getFullName());
-                updateContactVars.put("jobTitle", newContact.getJobTittle());
+                updateContactVars.put("jobTitle", newContact.getJobTitle());
                 updateContactVars.put("email", newContact.getEmail());
                 updateContactVars.put("mobile", newContact.getMobile());
                 updateContactVars.put("skypeId", newContact.getSkypeId());
@@ -153,6 +153,106 @@ public class ContactApiTest {
                                 .statusCode(202)
                                 .body("fullName", Matchers.equalTo(fullNameToUpdate))
                                 .body("email", Matchers.equalTo(newContact.getEmail()));
+        }
+
+        @Test
+        @DisplayName("Should fail to create a contact with null name.")
+        public void testF() {
+
+                JSONObject createContactVars = new JSONObject();
+                createContactVars.put("name", null);
+                createContactVars.put("fullName", newContact.getFullName());
+                createContactVars.put("jobTitle", newContact.getJobTitle());
+                createContactVars.put("email", newContact.getEmail());
+                createContactVars.put("mobile", newContact.getMobile());
+                createContactVars.put("skypeId", newContact.getSkypeId());
+
+                given()
+                                .headers(
+                                                "Content-Type",
+                                                ContentType.JSON)
+                                .body(createContactVars)
+                                .when()
+                                .post("/rest/contacts")
+                                .then()
+                                .assertThat()
+                                .statusCode(400);
+
+        }
+
+        @Test
+        @DisplayName("Should fail to create a contact with invalid email.")
+        public void testG() {
+
+                JSONObject createContactVars = new JSONObject();
+                createContactVars.put("name", newContact.getName());
+                createContactVars.put("fullName", newContact.getFullName());
+                createContactVars.put("jobTitle", newContact.getJobTitle());
+                createContactVars.put("email", "testMail");
+                createContactVars.put("mobile", newContact.getMobile());
+                createContactVars.put("skypeId", newContact.getSkypeId());
+
+                given()
+                                .headers(
+                                                "Content-Type",
+                                                ContentType.JSON)
+                                .body(createContactVars)
+                                .when()
+                                .post("/rest/contacts")
+                                .then()
+                                .assertThat()
+                                .statusCode(400);
+
+        }
+
+        @Test
+        @DisplayName("Should fail to create a contact with invalid number.")
+        public void testH() {
+
+                JSONObject createContactVars = new JSONObject();
+                createContactVars.put("name", newContact.getName());
+                createContactVars.put("fullName", newContact.getFullName());
+                createContactVars.put("jobTitle", newContact.getJobTitle());
+                createContactVars.put("email", newContact.getEmail());
+                createContactVars.put("mobile", "123932993293");
+                createContactVars.put("skypeId", newContact.getSkypeId());
+
+                given()
+                                .headers(
+                                                "Content-Type",
+                                                ContentType.JSON)
+                                .body(createContactVars)
+                                .when()
+                                .post("/rest/contacts")
+                                .then()
+                                .assertThat()
+                                .statusCode(400);
+
+        }
+
+        @Test
+        @DisplayName("Should fail to create a contact with invalid skype id.")
+        public void testI() {
+
+                JSONObject createContactVars = new JSONObject();
+                createContactVars.put("name", newContact.getName());
+                createContactVars.put("fullName", newContact.getFullName());
+                createContactVars.put("jobTitle", newContact.getJobTitle());
+                createContactVars.put("email", newContact.getEmail());
+                createContactVars.put("mobile", newContact.getMobile());
+                createContactVars.put("skypeId", "test");
+
+                given()
+                                .headers(
+                                                "Content-Type",
+                                                ContentType.JSON)
+                                .body(createContactVars)
+                                .when()
+                                .post("/rest/contacts")
+                                .then()
+                                .assertThat()
+                                .statusCode(400);
+
         }
 
 }
