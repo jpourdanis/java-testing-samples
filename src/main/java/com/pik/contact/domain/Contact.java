@@ -51,10 +51,10 @@ public class Contact {
     @Column(name = "SKYPE_ID")
     @Pattern(regexp = "[A-Za-z0-9_,\\-\\.]{6,32}", message = "{validation.skypeid.message}")
     private String skypeId;
-    
+
     public Contact() {
     }
-    
+
     public Contact(String name, String fullName, String jobTitle, String email, String mobile, String skypeId) {
         this.name = name;
         this.fullName = fullName;
@@ -84,15 +84,32 @@ public class Contact {
         return fullName;
     }
 
+    public String getJobTittle() {
+        return jobTitle;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getSkypeId() {
+        return skypeId;
+    }
+
     public void updateWith(Contact contact) {
-        Optional.ofNullable(contact.name).ifPresent(name->this.name=name);
-        Optional.ofNullable(contact.fullName).ifPresent(fullName->this.fullName=fullName);
+        Optional.ofNullable(contact.name).ifPresent(name -> this.name = name);
+        Optional.ofNullable(contact.fullName).ifPresent(fullName -> this.fullName = fullName);
     }
 
     @Override
     public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
+
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
