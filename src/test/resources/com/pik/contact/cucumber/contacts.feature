@@ -1,17 +1,8 @@
+Feature: Contacts Page Search
 
-@txn
-Feature: Contacts
+  Scenario: Search by name
 
-  Scenario: read contact
+    Given User is on search page
+    When User enters the name on search input
+    Then filtered results appear to the page
 
-    Given there is a contact with name = 'John' and full name = 'Doe'
-    When I perform GET request on "/rest/contacts"
-    Then the status code should be 200
-    And the response should be
-    """
-    [{
-    "id":"123",
-    "name":"John",
-    "fullName":"Doe"
-    }]
-    """
