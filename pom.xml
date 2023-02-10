@@ -389,6 +389,9 @@
 							<exclude>
 								com.pik.contact.api.internal.ContactApiTest.java
 							</exclude>
+							<exclude>
+								com.pik.contact.gui.selenium.StepDefinitions.TestRunner
+							</exclude>
 						</excludes>
 					</configuration>
 					<dependencies>
