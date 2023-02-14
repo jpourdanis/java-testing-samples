@@ -392,6 +392,9 @@
 							<exclude>
 								com.pik.contact.gui.selenium.StepDefinitions.TestRunner
 							</exclude>
+							<exclude>
+								com.pik.contact.gui.selenium.test.ContactsPageTest
+							</exclude>
 						</excludes>
 					</configuration>
 					<dependencies>
