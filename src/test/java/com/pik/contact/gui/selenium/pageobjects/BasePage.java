@@ -21,7 +21,6 @@ public abstract class BasePage<T extends BasePage> {
     }
 
     public T openPage() {
-        PageFactory.initElements(getDriver(), this);
         getDriver().get(getBaseUrl() + getPageUrl());
         ExpectedCondition pageLoadCondition = getPageLoadCondition();
         waitForPageToLoad(pageLoadCondition);
